@@ -6,10 +6,10 @@ import LessonsEntrypoint from "./entrypoints/LessonsEntrypoint";
 import PatchesEntrypoint from "./entrypoints/PatchesEntrypoint";
 import TeachersEntrypoint from "./entrypoints/TeachersEntrypoint";
 import AuthEntrypoint from "./entrypoints/AuthEntrypoint";
-import {EntityType} from "./interfaces";
 import Entrypoint from "./entrypoints/Entrypoint";
 import RegularTimetableEntrypoint from "./entrypoints/RegularTimetableEntrypoint";
 
+export * from './interfaces';
 type ApiEntrypoints =
     CabinetsEntrypoint
     | BuildingsEntrypoint
@@ -19,6 +19,16 @@ type ApiEntrypoints =
     | PatchesEntrypoint
     | TeachersEntrypoint
     | AuthEntrypoint;
+
+export enum EntityType {
+    Teacher,
+    Cabinet,
+    Building,
+    Lesson,
+    PatchEntry,
+    Group,
+    TimetableEntry
+}
 
 export default class ApiClient {
     public readonly cabinets: CabinetsEntrypoint;
