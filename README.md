@@ -1,7 +1,10 @@
 # GGTU Timetable API Client
 This library is meat to be used as an API client for [GGTU](http://ggtu.ru/) Timetable API. 
 You don't need any authorization to use read-only methods, because the data they provide is publicly accessible.
-
+## Installation
+```
+$ npm i  
+```
 ## Usage
 ```javascript
 import ApiClient from 'ggtu-timetable-api-client';
