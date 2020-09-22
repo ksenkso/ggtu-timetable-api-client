@@ -14,15 +14,15 @@ const config = {
 const api = new ApiClient(config);
 // use the api
 ``` 
-## Entrypoints
-All entrypoints extend from the `Entrypoint` template class except the `AuthEntrypoint`.
+## Endpoints
+All entrypoints extend from the `Endpoint` template class except the `AuthEndpoint`.
  - `getAll`;
  - `create`;
  - `get`;
  - `update`;
  - `delete`.
 ```typescript
-declare class Entrypoint<T> {
+declare class Endpoint<T> {
     protected axios: AxiosInstance;
     protected route: string;
     constructor(axios: AxiosInstance, route: string);
@@ -35,7 +35,7 @@ declare class Entrypoint<T> {
 ```
 ### Auth
 ```typescript
-declare class AuthEntrypoint {
+declare class AuthEndpoint {
     private _api;
     protected route: string;
     protected accessToken: string;
@@ -50,9 +50,9 @@ declare class AuthEntrypoint {
 }
 ```
 
-Also, there is a `TimetableEntrypoint` class which is extended by `RegularTimetableEntrypoint` and `PatchesEntrypoint`.
+Also, there is a `TimetableEndpoint` class which is extended by `RegularTimetableEndpoint` and `PatchesEndpoint`.
 ```typescript
-declare class TimetableEntrypoint<T> extends Entrypoint<T> {
+declare class TimetableEndpoint<T> extends Endpoint<T> {
     getForCabinet(cabinetId: number): Promise<T[]>;
     getForCabinetByWeek(cabinetId: number, week: Week): Promise<T[]>;
     getForGroup(groupId: number): Promise<T[]>;

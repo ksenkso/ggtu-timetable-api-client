@@ -5,7 +5,7 @@ export interface ApiCredentials {
   accessToken: string;
   refreshToken: string;
 }
-export default class AuthEntrypoint {
+export default class AuthEndpoint {
   protected route = 'auth';
   protected accessToken = '';
   protected refreshToken = '';

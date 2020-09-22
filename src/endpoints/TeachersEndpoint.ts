@@ -1,8 +1,8 @@
-import Entrypoint from './Entrypoint';
+import Endpoint from './Endpoint';
 import { AxiosInstance } from 'axios';
 import { Teacher } from '../interfaces';
 
-export default class TeachersEntrypoint extends Entrypoint<Teacher> {
+export default class TeachersEndpoint extends Endpoint<Teacher> {
   constructor(api: AxiosInstance) {
     super(api, 'teachers');
   }

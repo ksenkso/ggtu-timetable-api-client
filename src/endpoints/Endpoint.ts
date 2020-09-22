@@ -3,7 +3,7 @@ import { WithId } from '../interfaces';
 import RequestBuilder from '../utils/RequestBuilder';
 import RequestConfig from '../interfaces/RequestConfig';
 
-export default class Entrypoint<T> {
+export default class Endpoint<T> {
   constructor(protected axios: AxiosInstance, protected route: string) {}
   protected _getAll(config: AxiosRequestConfig) {
     return this.axios

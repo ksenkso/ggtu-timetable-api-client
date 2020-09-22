@@ -1,24 +1,24 @@
-import CabinetsEntrypoint from './entrypoints/CabinetsEntrypoint';
+import CabinetsEndpoint from './endpoints/CabinetsEndpoint';
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import BuildingsEntrypoint from './entrypoints/BuildingsEntrypoint';
-import GroupsEntrypoint from './entrypoints/GroupsEntrypoint';
-import LessonsEntrypoint from './entrypoints/LessonsEntrypoint';
-import PatchesEntrypoint from './entrypoints/PatchesEntrypoint';
-import TeachersEntrypoint from './entrypoints/TeachersEntrypoint';
-import AuthEntrypoint from './entrypoints/AuthEntrypoint';
-import Entrypoint from './entrypoints/Entrypoint';
-import RegularTimetableEntrypoint from './entrypoints/RegularTimetableEntrypoint';
+import BuildingsEndpoint from './endpoints/BuildingsEndpoint';
+import GroupsEndpoint from './endpoints/GroupsEndpoint';
+import LessonsEndpoint from './endpoints/LessonsEndpoint';
+import PatchesEndpoint from './endpoints/PatchesEndpoint';
+import TeachersEndpoint from './endpoints/TeachersEndpoint';
+import AuthEndpoint from './endpoints/AuthEndpoint';
+import Endpoint from './endpoints/Endpoint';
+import RegularTimetableEndpoint from './endpoints/RegularTimetableEndpoint';
 
 export * from './interfaces';
-type ApiEntrypoints =
-  | CabinetsEntrypoint
-  | BuildingsEntrypoint
-  | GroupsEntrypoint
-  | LessonsEntrypoint
-  | RegularTimetableEntrypoint
-  | PatchesEntrypoint
-  | TeachersEntrypoint
-  | AuthEntrypoint;
+type ApiEndpoints =
+  | CabinetsEndpoint
+  | BuildingsEndpoint
+  | GroupsEndpoint
+  | LessonsEndpoint
+  | RegularTimetableEndpoint
+  | PatchesEndpoint
+  | TeachersEndpoint
+  | AuthEndpoint;
 
 export enum EntityType {
   Teacher,
@@ -31,25 +31,25 @@ export enum EntityType {
 }
 
 export default class ApiClient {
-  public readonly cabinets: CabinetsEntrypoint;
-  public readonly buildings: BuildingsEntrypoint;
-  public readonly groups: GroupsEntrypoint;
-  public readonly lessons: LessonsEntrypoint;
-  public readonly timetable: RegularTimetableEntrypoint;
-  public readonly patches: PatchesEntrypoint;
-  public readonly teachers: TeachersEntrypoint;
-  public readonly auth: AuthEntrypoint;
+  public readonly cabinets: CabinetsEndpoint;
+  public readonly buildings: BuildingsEndpoint;
+  public readonly groups: GroupsEndpoint;
+  public readonly lessons: LessonsEndpoint;
+  public readonly timetable: RegularTimetableEndpoint;
+  public readonly patches: PatchesEndpoint;
+  public readonly teachers: TeachersEndpoint;
+  public readonly auth: AuthEndpoint;
   private readonly _api: AxiosInstance;
   constructor(axiosConfig: AxiosRequestConfig) {
     this._api = axios.create(axiosConfig);
-    this.cabinets = new CabinetsEntrypoint(this._api);
-    this.buildings = new BuildingsEntrypoint(this._api);
-    this.groups = new GroupsEntrypoint(this._api);
-    this.lessons = new LessonsEntrypoint(this._api);
-    this.timetable = new RegularTimetableEntrypoint(this._api);
-    this.teachers = new TeachersEntrypoint(this._api);
-    this.patches = new PatchesEntrypoint(this._api);
-    this.auth = new AuthEntrypoint(this._api);
+    this.cabinets = new CabinetsEndpoint(this._api);
+    this.buildings = new BuildingsEndpoint(this._api);
+    this.groups = new GroupsEndpoint(this._api);
+    this.lessons = new LessonsEndpoint(this._api);
+    this.timetable = new RegularTimetableEndpoint(this._api);
+    this.teachers = new TeachersEndpoint(this._api);
+    this.patches = new PatchesEndpoint(this._api);
+    this.auth = new AuthEndpoint(this._api);
     // refresh token if it has been expired
     this._api.interceptors.response.use(undefined, error => {
       if (error.config && error.response && error.response.status === 401) {
@@ -65,9 +65,7 @@ export default class ApiClient {
     });
   }
 
-  getEntrypoint<T extends ApiEntrypoints = Entrypoint<any>>(
-    entity: EntityType
-  ): T {
+  getEndpoint<T extends ApiEndpoints = Endpoint<any>>(entity: EntityType): T {
     switch (entity) {
       case EntityType.Building:
         return this.buildings as T;
