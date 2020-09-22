@@ -13,7 +13,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test",
+    "test": "echo \"No tests specified\"",
     "lint": "tsdx lint",
     "prepare": "tsdx build"
   },
