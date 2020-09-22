@@ -1,8 +1,8 @@
-import {Lesson} from './Lesson';
-import {Cabinet} from './Cabinet';
-import {Group} from './Group';
-import {Teacher} from './Teacher';
-import {TimetableEntryType, Week} from './TimetableEntry';
+import { Lesson } from './Lesson';
+import { Cabinet } from './Cabinet';
+import { Group } from './Group';
+import { Teacher } from './Teacher';
+import { TimetableEntryType, Week } from './TimetableEntry';
 
 export interface TimetablePatch {
   id: number;

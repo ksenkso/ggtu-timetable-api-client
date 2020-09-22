@@ -1,4 +1,4 @@
-import {Cabinet} from "./Cabinet";
+import { Cabinet } from './Cabinet';
 
 export interface Building {
   id: number;

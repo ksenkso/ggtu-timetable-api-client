@@ -1,7 +1,7 @@
-import {Lesson} from './Lesson';
-import {Teacher} from './Teacher';
-import {Cabinet} from './Cabinet';
-import {Group} from './Group';
+import { Lesson } from './Lesson';
+import { Teacher } from './Teacher';
+import { Cabinet } from './Cabinet';
+import { Group } from './Group';
 
 export enum Week {
   Top,

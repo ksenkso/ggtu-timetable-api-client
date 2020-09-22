@@ -1,4 +1,4 @@
-import {TimetableEntry} from './TimetableEntry';
+import { TimetableEntry } from './TimetableEntry';
 
 export interface Teacher {
   id?: number;
