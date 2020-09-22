@@ -11,6 +11,9 @@ export default class RequestBuilder {
   }
 
   with(entities: string[]) {
+    if (!this.config.params) {
+      this.config.params = {};
+    }
     this.config.params.with = this.config.params.with
       ? this.config.params.with.concat(entities)
       : entities;
