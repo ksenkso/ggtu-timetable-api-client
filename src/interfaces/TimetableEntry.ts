@@ -32,9 +32,9 @@ export interface TimetableEntry {
   lessonId: number;
   cabinetId: number;
   groupId: number;
-  cabinet?: Cabinet;
-  lesson?: Lesson;
-  teachers?: Teacher[];
+  cabinet: Cabinet;
+  lesson: Lesson;
+  teachers: Teacher[];
   group?: Group;
 }
 

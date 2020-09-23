@@ -16,7 +16,7 @@ export interface TimetablePatch {
   cabinet: Cabinet;
   lesson: Lesson;
   teachers: Teacher[];
-  group: Group;
+  group?: Group;
 }
 
 export interface TimetablePatchDTO {
