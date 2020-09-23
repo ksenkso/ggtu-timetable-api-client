@@ -6,5 +6,5 @@ export { Group } from './Group';
 export { Teacher } from './Teacher';
 export { User } from './User';
 export { Role } from './Role';
-export { TimetableEntry } from './TimetableEntry';
-export { TimetablePatch } from './TimetablePatch';
+export * from './TimetableEntry';
+export * from './TimetablePatch';

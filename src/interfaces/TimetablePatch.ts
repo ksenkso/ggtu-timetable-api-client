@@ -18,3 +18,14 @@ export interface TimetablePatch {
   teachers: Teacher[];
   group: Group;
 }
+
+export interface TimetablePatchDTO {
+  id?: number;
+  week: Week;
+  index: number;
+  type: TimetableEntryType;
+  lessonId: number;
+  cabinetId: number;
+  groupId: number;
+  teacherIds: number[];
+}

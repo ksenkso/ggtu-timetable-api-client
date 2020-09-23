@@ -1,7 +1,7 @@
 import Endpoint from './Endpoint';
-import { Week } from '../interfaces/TimetableEntry';
+import { Week } from '../interfaces';
 
-export default class TimetableEndpoint<T> extends Endpoint<T> {
+export default class TimetableEndpoint<T, C> extends Endpoint<T, C> {
   getForCabinet(cabinetId: number): Promise<T[]> {
     return this.axios
       .get(`${this.route}/cabinet/${cabinetId}`)

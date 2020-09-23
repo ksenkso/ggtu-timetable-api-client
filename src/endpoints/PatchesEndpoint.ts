@@ -1,9 +1,12 @@
 import { AxiosInstance } from 'axios';
 import TimetableEndpoint from './TimetableEndpoint';
-import { TimetablePatch } from '../interfaces';
+import { TimetablePatch, TimetablePatchDTO } from '../interfaces';
 
-export default class PatchesEndpoint extends TimetableEndpoint<TimetablePatch> {
+export default class PatchesEndpoint extends TimetableEndpoint<
+  TimetablePatch,
+  TimetablePatchDTO
+> {
   constructor(api: AxiosInstance) {
-    super(api, 'timetable');
+    super(api, 'patches');
   }
 }

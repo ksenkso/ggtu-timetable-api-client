@@ -3,7 +3,7 @@ import { WithId } from '../interfaces';
 import RequestBuilder from '../utils/RequestBuilder';
 import RequestConfig from '../interfaces/RequestConfig';
 
-export default class Endpoint<T> {
+export default class Endpoint<T, C = T, U = C> {
   constructor(protected axios: AxiosInstance, protected route: string) {}
   protected _getAll(config: AxiosRequestConfig) {
     return this.axios
@@ -23,13 +23,13 @@ export default class Endpoint<T> {
       .then(res => res.data as number);
   }
 
-  protected _update(id: number, data: Partial<T>, config: AxiosRequestConfig) {
+  protected _update(id: number, data: Partial<U>, config: AxiosRequestConfig) {
     return this.axios
       .patch(`${this.route}/${id}`, data, config)
       .then(res => res.data as WithId<T>);
   }
 
-  protected _create(data: T, config: AxiosRequestConfig) {
+  protected _create(data: C, config: AxiosRequestConfig) {
     return this.axios
       .post(this.route, data, config)
       .then(res => res.data as WithId<T>);
@@ -51,14 +51,14 @@ export default class Endpoint<T> {
 
   update(
     id: number,
-    data: Partial<T>,
+    data: Partial<U>,
     config?: RequestConfig
   ): Promise<WithId<T>> {
     const builder = new RequestBuilder(config);
     return this._update(id, data, builder.getConfig());
   }
 
-  create(data: T, config?: RequestConfig): Promise<WithId<T>> {
+  create(data: C, config?: RequestConfig): Promise<WithId<T>> {
     const builder = new RequestBuilder(config);
     return this._create(data, builder.getConfig());
   }

@@ -24,7 +24,7 @@ export enum Day {
 }
 
 export interface TimetableEntry {
-  id: number;
+  id?: number;
   day: Day;
   week: Week;
   index: number;
@@ -32,8 +32,20 @@ export interface TimetableEntry {
   lessonId: number;
   cabinetId: number;
   groupId: number;
-  cabinet: Cabinet;
-  lesson: Lesson;
-  teachers: Teacher[];
-  group: Group;
+  cabinet?: Cabinet;
+  lesson?: Lesson;
+  teachers?: Teacher[];
+  group?: Group;
+}
+
+export interface TimetableEntryDTO {
+  id?: number;
+  day: Day;
+  week: Week;
+  index: number;
+  type: TimetableEntryType;
+  lessonId: number;
+  cabinetId: number;
+  groupId: number;
+  teacherIds: number[];
 }
