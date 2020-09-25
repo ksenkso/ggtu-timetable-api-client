@@ -12,6 +12,7 @@ export enum TimetableEntryType {
   Lecture,
   Practice,
   Lab,
+  Empty,
 }
 
 export enum Day {
