@@ -2,12 +2,11 @@ import { Lesson } from './Lesson';
 import { Cabinet } from './Cabinet';
 import { Group } from './Group';
 import { Teacher } from './Teacher';
-import { TimetableEntryType, Week } from './TimetableEntry';
+import { TimetableEntryType } from './TimetableEntry';
 
 export interface TimetablePatch {
   id: number;
-  date: string;
-  week: Week;
+  dates: string[];
   index: number;
   type: TimetableEntryType;
   lessonId: number;
@@ -21,11 +20,11 @@ export interface TimetablePatch {
 
 export interface TimetablePatchDTO {
   id?: number;
-  week: Week;
   index: number;
   type: TimetableEntryType;
   lessonId: number;
   cabinetId: number;
   groupId: number;
   teacherIds: number[];
+  dates: string[];
 }
