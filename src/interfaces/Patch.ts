@@ -1,28 +1,28 @@
-import { Lesson } from './Lesson';
+import { Subject } from './Subject';
 import { Cabinet } from './Cabinet';
 import { Group } from './Group';
 import { Teacher } from './Teacher';
-import { TimetableEntryType } from './TimetableEntry';
+import { TimetableEntryType } from './Lesson';
 
-export interface TimetablePatch {
+export interface Patch {
   id: number;
   dates: string[];
   index: number;
   type: TimetableEntryType;
-  lessonId: number;
+  subjectId: number;
   cabinetId: number;
   groupId: number;
   cabinet: Cabinet;
-  lesson: Lesson;
+  lesson: Subject;
   teachers: Teacher[];
   group?: Group;
 }
 
-export interface TimetablePatchDTO {
+export interface PatchDto {
   id?: number;
   index: number;
   type: TimetableEntryType;
-  lessonId: number;
+  subjectId: number;
   cabinetId: number;
   groupId: number;
   teacherIds: number[];

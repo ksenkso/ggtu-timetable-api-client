@@ -26,15 +26,15 @@ export default class TimetableEndpoint<T, C> extends Endpoint<T, C> {
       .then(res => res.data);
   }
 
-  getForLesson(lessonId: number): Promise<T[]> {
+  getForSubject(subjectId: number): Promise<T[]> {
     return this.axios
-      .get(`${this.route}/lesson/${lessonId}`)
+      .get(`${this.route}/lesson/${subjectId}`)
       .then(res => res.data);
   }
 
-  getForLessonByWeek(lessonId: number, week: Week): Promise<T[]> {
+  getForSubjectByWeek(subjectId: number, week: Week): Promise<T[]> {
     return this.axios
-      .get(`${this.route}/lesson/${lessonId}/${week}`)
+      .get(`${this.route}/lesson/${subjectId}/${week}`)
       .then(res => res.data);
   }
 

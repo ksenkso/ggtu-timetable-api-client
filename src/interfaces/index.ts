@@ -1,10 +1,10 @@
 export * from './common';
 export { Building } from './Building';
 export { Cabinet } from './Cabinet';
-export { Lesson } from './Lesson';
+export { Subject } from './Subject';
 export { Group } from './Group';
 export { Teacher } from './Teacher';
 export { User } from './User';
 export { Role } from './Role';
-export * from './TimetableEntry';
-export * from './TimetablePatch';
+export * from './Lesson';
+export * from './Patch';

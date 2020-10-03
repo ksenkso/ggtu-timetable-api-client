@@ -1,7 +1,7 @@
-import { TimetableEntry } from './TimetableEntry';
+import { Lesson } from './Lesson';
 
 export interface Teacher {
   id?: number;
   name: string;
-  lessons?: TimetableEntry;
+  lessons?: Lesson;
 }

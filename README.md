@@ -57,8 +57,8 @@ declare class TimetableEndpoint<T> extends Endpoint<T> {
     getForCabinetByWeek(cabinetId: number, week: Week): Promise<T[]>;
     getForGroup(groupId: number): Promise<T[]>;
     getForGroupByWeek(groupId: number, week: Week): Promise<T[]>;
-    getForLesson(lessonId: number): Promise<T[]>;
-    getForLessonByWeek(lessonId: number, week: Week): Promise<T[]>;
+    getForSubject(subjectId: number): Promise<T[]>;
+    getForSubjectByWeek(subjectId: number, week: Week): Promise<T[]>;
     getForTeacher(teacherId: number): Promise<T[]>;
     getForTeacherByWeek(teacherId: number, week: Week): Promise<T[]>;
 }
