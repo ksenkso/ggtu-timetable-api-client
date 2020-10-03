@@ -13,15 +13,14 @@ import FacultiesEndpoint from './endpoints/FacultiesEndpoint';
 
 export * from './interfaces';
 type ApiEndpoints =
-    | CabinetsEndpoint
-    | BuildingsEndpoint
-    | GroupsEndpoint
-    | LessonsEndpoint
-    | RegularTimetableEndpoint
-    | PatchesEndpoint
-    | TeachersEndpoint
-
-    | AuthEndpoint;
+  | CabinetsEndpoint
+  | BuildingsEndpoint
+  | GroupsEndpoint
+  | LessonsEndpoint
+  | RegularTimetableEndpoint
+  | PatchesEndpoint
+  | TeachersEndpoint
+  | AuthEndpoint;
 
 export enum EntityType {
   Teacher,
