@@ -25,7 +25,7 @@ export enum Day {
 }
 
 export interface Lesson {
-  id?: number;
+  id: number;
   day: Day;
   week: Week;
   index: number;
@@ -39,14 +39,5 @@ export interface Lesson {
   group?: Group;
 }
 
-export interface LessonDto {
-  id?: number;
-  day: Day;
-  week: Week;
-  index: number;
-  type: TimetableEntryType;
-  subjectId: number;
-  cabinetId: number;
-  groupId: number;
-  teacherIds: number[];
-}
+export type CreateLessonDto = Omit<Lesson, 'id' | 'cabinet' | 'lesson' | 'teachers' | 'group'>;
+export type UpdateLessonDto = Partial<CreateLessonDto>;

@@ -2,7 +2,7 @@ import CabinetsEndpoint from './endpoints/CabinetsEndpoint';
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import BuildingsEndpoint from './endpoints/BuildingsEndpoint';
 import GroupsEndpoint from './endpoints/GroupsEndpoint';
-import LessonsEndpoint from './endpoints/LessonsEndpoint';
+import SubjectsEndpoint from './endpoints/SubjectsEndpoint';
 import PatchesEndpoint from './endpoints/PatchesEndpoint';
 import TeachersEndpoint from './endpoints/TeachersEndpoint';
 import AuthEndpoint from './endpoints/AuthEndpoint';
@@ -16,7 +16,7 @@ type ApiEndpoints =
   | CabinetsEndpoint
   | BuildingsEndpoint
   | GroupsEndpoint
-  | LessonsEndpoint
+  | SubjectsEndpoint
   | RegularTimetableEndpoint
   | PatchesEndpoint
   | TeachersEndpoint
@@ -36,7 +36,7 @@ export default class ApiClient {
   public readonly cabinets: CabinetsEndpoint;
   public readonly buildings: BuildingsEndpoint;
   public readonly groups: GroupsEndpoint;
-  public readonly lessons: LessonsEndpoint;
+  public readonly lessons: SubjectsEndpoint;
   public readonly timetable: RegularTimetableEndpoint;
   public readonly patches: PatchesEndpoint;
   public readonly teachers: TeachersEndpoint;
@@ -50,7 +50,7 @@ export default class ApiClient {
     this.cabinets = new CabinetsEndpoint(this._api);
     this.buildings = new BuildingsEndpoint(this._api);
     this.groups = new GroupsEndpoint(this._api);
-    this.lessons = new LessonsEndpoint(this._api);
+    this.lessons = new SubjectsEndpoint(this._api);
     this.timetable = new RegularTimetableEndpoint(this._api);
     this.teachers = new TeachersEndpoint(this._api);
     this.patches = new PatchesEndpoint(this._api);

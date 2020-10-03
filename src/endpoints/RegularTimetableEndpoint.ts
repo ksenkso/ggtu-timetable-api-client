@@ -1,10 +1,11 @@
 import TimetableEndpoint from './TimetableEndpoint';
 import { AxiosInstance } from 'axios';
-import { Lesson, LessonDto } from '../interfaces';
+import { CreateLessonDto, Lesson, UpdateLessonDto } from '../interfaces';
 
 export default class RegularTimetableEndpoint extends TimetableEndpoint<
   Lesson,
-  LessonDto
+  CreateLessonDto,
+  UpdateLessonDto
 > {
   constructor(api: AxiosInstance) {
     super(api, 'timetable');

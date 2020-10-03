@@ -18,13 +18,5 @@ export interface Patch {
   group?: Group;
 }
 
-export interface PatchDto {
-  id?: number;
-  index: number;
-  type: TimetableEntryType;
-  subjectId: number;
-  cabinetId: number;
-  groupId: number;
-  teacherIds: number[];
-  dates: string[];
-}
+export type CreatePatchDto = Omit<Patch, 'id' | 'cabinet' | 'lesson' | 'teachers' | 'group'>;
+export type UpdatePatchDto = Partial<CreatePatchDto>;

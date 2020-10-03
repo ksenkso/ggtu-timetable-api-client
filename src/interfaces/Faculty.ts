@@ -4,4 +4,5 @@ export interface Faculty {
 }
 
 export type FacultyCreateDto = Omit<Faculty, 'id'>;
-export type FacultyUpdateDto = Partial<FacultyCreateDto>;
+// not using Partial here, name should be provided
+export type FacultyUpdateDto = FacultyCreateDto;
