@@ -8,17 +8,19 @@ import TeachersEndpoint from './endpoints/TeachersEndpoint';
 import AuthEndpoint from './endpoints/AuthEndpoint';
 import Endpoint from './endpoints/Endpoint';
 import RegularTimetableEndpoint from './endpoints/RegularTimetableEndpoint';
+import SpecializationsEndpoint from './endpoints/SpecializationsEndpoint';
+import FacultiesEndpoint from './endpoints/FacultiesEndpoint';
 
 export * from './interfaces';
 type ApiEndpoints =
-  | CabinetsEndpoint
-  | BuildingsEndpoint
-  | GroupsEndpoint
-  | LessonsEndpoint
-  | RegularTimetableEndpoint
-  | PatchesEndpoint
-  | TeachersEndpoint
-  | AuthEndpoint;
+    | CabinetsEndpoint
+    | BuildingsEndpoint
+    | GroupsEndpoint
+    | LessonsEndpoint
+    | RegularTimetableEndpoint
+    | PatchesEndpoint
+    | TeachersEndpoint
+    | AuthEndpoint;
 
 export enum EntityType {
   Teacher,
@@ -39,7 +41,10 @@ export default class ApiClient {
   public readonly patches: PatchesEndpoint;
   public readonly teachers: TeachersEndpoint;
   public readonly auth: AuthEndpoint;
+  public readonly specs: SpecializationsEndpoint;
+  public readonly faculties: FacultiesEndpoint;
   private readonly _api: AxiosInstance;
+
   constructor(axiosConfig: AxiosRequestConfig) {
     this._api = axios.create(axiosConfig);
     this.cabinets = new CabinetsEndpoint(this._api);
@@ -50,6 +55,8 @@ export default class ApiClient {
     this.teachers = new TeachersEndpoint(this._api);
     this.patches = new PatchesEndpoint(this._api);
     this.auth = new AuthEndpoint(this._api);
+    this.specs = new SpecializationsEndpoint(this._api);
+    this.faculties = new FacultiesEndpoint(this._api);
     // refresh token if it has been expired
     this._api.interceptors.response.use(undefined, error => {
       if (error.config && error.response && error.response.status === 401) {
