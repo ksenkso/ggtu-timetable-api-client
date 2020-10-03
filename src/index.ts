@@ -20,6 +20,7 @@ type ApiEndpoints =
     | RegularTimetableEndpoint
     | PatchesEndpoint
     | TeachersEndpoint
+
     | AuthEndpoint;
 
 export enum EntityType {
