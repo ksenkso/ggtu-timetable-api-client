@@ -13,7 +13,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "echo \"No tests specified\"",
+    "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build"
   },
@@ -33,6 +33,7 @@
   "author": "ksenkso",
   "module": "dist/ggtu-timetable-api-client.esm.js",
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "husky": "^4.2.5",
     "tsdx": "^0.13.3",
     "tslib": "^2.0.1",
