@@ -3,6 +3,6 @@ export interface Faculty {
   name: string;
 }
 
-export type FacultyCreateDto = Omit<Faculty, 'id'>;
+export type CreateFacultyDto = Omit<Faculty, 'id'>;
 // not using Partial here, name should be provided
-export type FacultyUpdateDto = FacultyCreateDto;
+export type UpdateFacultyDto = CreateFacultyDto;
