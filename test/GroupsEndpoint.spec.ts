@@ -9,8 +9,9 @@ describe('GroupsEndpoint', function() {
   let allGroups: Group[];
   let allSpecs: Specialization[];
   let allFaculties: Faculty[];
-  beforeAll(() => {
+  beforeAll(async () => {
     api = new ApiClient({ baseURL: process.env.API_URL });
+    await api.auth.login(process.env.ROOT_USER as string, process.env.ROOT_PASSWORD as string)
     return Promise.all([
       api.specs.getAll().then(specs => {
         allSpecs = specs;

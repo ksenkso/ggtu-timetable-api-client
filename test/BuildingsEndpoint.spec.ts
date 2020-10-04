@@ -5,8 +5,9 @@ describe('GroupsEndpoint', function() {
   let api: ApiClient;
   let createdId: number;
   let allBuildings: Building[];
-  beforeAll(() => {
+  beforeAll(async () => {
     api = new ApiClient({ baseURL: process.env.API_URL });
+    await api.auth.login(process.env.ROOT_USER as string, process.env.ROOT_PASSWORD as string)
   });
 
   it('should fetch all buildings from API', function(done) {

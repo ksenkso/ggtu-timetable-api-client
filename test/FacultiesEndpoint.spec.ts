@@ -9,8 +9,9 @@ describe('FacultiesEndpoint', function() {
   let api: ApiClient;
   let createdId: number;
   let allFaculties: Faculty[];
-  beforeAll(() => {
+  beforeAll(async () => {
     api = new ApiClient({ baseURL: process.env.API_URL });
+    await api.auth.login(process.env.ROOT_USER as string, process.env.ROOT_PASSWORD as string)
   });
 
   it('should fetch all faculties from API', function(done) {
