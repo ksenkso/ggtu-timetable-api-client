@@ -10,4 +10,4 @@ export interface Cabinet {
 }
 
 export type CreateCabinetDto = Omit<Cabinet, 'id' | 'building'>;
-export type UpdateCabinetDto = CreateCabinetDto;
+export type UpdateCabinetDto = Partial<CreateCabinetDto>;
