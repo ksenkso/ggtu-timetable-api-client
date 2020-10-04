@@ -36,7 +36,7 @@ export default class ApiClient {
   public readonly cabinets: CabinetsEndpoint;
   public readonly buildings: BuildingsEndpoint;
   public readonly groups: GroupsEndpoint;
-  public readonly lessons: SubjectsEndpoint;
+  public readonly subjects: SubjectsEndpoint;
   public readonly timetable: RegularTimetableEndpoint;
   public readonly patches: PatchesEndpoint;
   public readonly teachers: TeachersEndpoint;
@@ -50,7 +50,7 @@ export default class ApiClient {
     this.cabinets = new CabinetsEndpoint(this._api);
     this.buildings = new BuildingsEndpoint(this._api);
     this.groups = new GroupsEndpoint(this._api);
-    this.lessons = new SubjectsEndpoint(this._api);
+    this.subjects = new SubjectsEndpoint(this._api);
     this.timetable = new RegularTimetableEndpoint(this._api);
     this.teachers = new TeachersEndpoint(this._api);
     this.patches = new PatchesEndpoint(this._api);
@@ -81,7 +81,7 @@ export default class ApiClient {
       case EntityType.Group:
         return this.groups as T;
       case EntityType.Lesson:
-        return this.lessons as T;
+        return this.subjects as T;
       case EntityType.PatchEntry:
         return this.patches as T;
       case EntityType.Teacher:
