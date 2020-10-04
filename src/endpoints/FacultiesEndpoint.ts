@@ -2,14 +2,14 @@ import Endpoint from './Endpoint';
 import { AxiosInstance } from 'axios';
 import {
   Faculty,
-  FacultyCreateDto,
-  FacultyUpdateDto,
+  CreateFacultyDto,
+  UpdateFacultyDto,
 } from '../interfaces/Faculty';
 
 export default class FacultiesEndpoint extends Endpoint<
   Faculty,
-  FacultyCreateDto,
-  FacultyUpdateDto
+  CreateFacultyDto,
+  UpdateFacultyDto
 > {
   constructor(api: AxiosInstance) {
     super(api, 'faculties');
