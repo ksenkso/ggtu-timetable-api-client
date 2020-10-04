@@ -34,10 +34,10 @@ export interface Lesson {
   cabinetId: number;
   groupId: number;
   cabinet: Cabinet;
-  lesson: Subject;
+  subject: Subject;
   teachers: Teacher[];
   group?: Group;
 }
 
-export type CreateLessonDto = Omit<Lesson, 'id' | 'cabinet' | 'lesson' | 'teachers' | 'group'>;
+export type CreateLessonDto = Omit<Lesson, 'id' | 'cabinet' | 'subject' | 'teachers' | 'group'> & {teacherIds: number[]};
 export type UpdateLessonDto = Partial<CreateLessonDto>;
