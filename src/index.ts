@@ -59,13 +59,17 @@ export default class ApiClient {
     this.faculties = new FacultiesEndpoint(this._api);
     // refresh token if it has been expired
     this._api.interceptors.response.use(undefined, error => {
-      if (error.config && error.response && error.response.status === 401) {
-        if (error.response.name === 'TokenExpiredError') {
-          return this.auth.refresh().then(() => {
-            return this._api.request(error.config);
-          });
+      if (error.config && error.response) {
+        if (error.response.status === 401) {
+          if (error.response.name === 'TokenExpiredError') {
+            return this.auth.refresh().then(() => {
+              return this._api.request(error.config);
+            });
+          } else {
+            this.auth.logout();
+          }
         } else {
-          this.auth.logout();
+          return Promise.reject(error.response.data)
         }
       }
       return Promise.reject(error);
