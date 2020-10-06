@@ -22,4 +22,4 @@ export type CreatePatchDto = Omit<
   Patch,
   'id' | 'cabinet' | 'subject' | 'teachers' | 'group'
 > & { teacherIds: number[] };
-export type UpdatePatchDto = Partial<CreatePatchDto>;
+export type UpdatePatchDto = Partial<CreatePatchDto & { id: number }>;

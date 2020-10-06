@@ -7,4 +7,4 @@ export interface Building {
 }
 
 export type CreateBuildingDto = Omit<Building, 'id' | 'cabinets'>;
-export type UpdateBuildingDto = CreateBuildingDto;
+export type UpdateBuildingDto = CreateBuildingDto & { id?: number };

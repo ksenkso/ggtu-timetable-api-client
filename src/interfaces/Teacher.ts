@@ -8,4 +8,4 @@ export interface Teacher {
 
 export type CreateTeacherDto = Omit<Teacher, 'id' | 'lessons'>;
 // not using Partial here, name should be provided
-export type UpdateTeacherDto = CreateTeacherDto;
+export type UpdateTeacherDto = CreateTeacherDto & { id?: number };

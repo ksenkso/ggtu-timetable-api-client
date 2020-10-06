@@ -5,4 +5,4 @@ export interface Subject {
 
 export type CreateSubjectDto = Omit<Subject, 'id'>;
 // not using Partial here, name should be provided
-export type UpdateSubjectDto = CreateSubjectDto;
+export type UpdateSubjectDto = CreateSubjectDto & { id?: number };

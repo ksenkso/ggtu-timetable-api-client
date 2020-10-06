@@ -5,4 +5,6 @@ export interface Specialization {
 }
 
 export type CreateSpecializationDto = Omit<Specialization, 'id'>;
-export type UpdateSpecializationDto = Partial<CreateSpecializationDto>;
+export type UpdateSpecializationDto = Partial<
+  CreateSpecializationDto & { id: number }
+>;

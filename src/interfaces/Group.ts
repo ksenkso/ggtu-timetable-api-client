@@ -17,4 +17,4 @@ export type GroupCreateDto = Omit<
   Group,
   'id' | 'entries' | 'specialization' | 'faculty'
 >;
-export type GroupUpdateDto = GroupCreateDto;
+export type GroupUpdateDto = GroupCreateDto & { id?: number };

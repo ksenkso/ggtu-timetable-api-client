@@ -43,4 +43,4 @@ export type CreateLessonDto = Omit<
   Lesson,
   'id' | 'cabinet' | 'subject' | 'teachers' | 'group'
 > & { teacherIds: number[] };
-export type UpdateLessonDto = Partial<CreateLessonDto>;
+export type UpdateLessonDto = Partial<CreateLessonDto & { id: number }>;
