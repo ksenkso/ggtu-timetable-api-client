@@ -2,10 +2,12 @@ import { AxiosInstance } from 'axios';
 import { User } from '../interfaces';
 
 export const GGTU_TOKENS_STORAGE_KEY = `ggtu_api/tokens`;
+
 export interface ApiCredentials {
   accessToken: string;
   refreshToken: string;
 }
+
 export default class AuthEndpoint {
   protected route = 'auth';
   protected accessToken = '';
@@ -55,7 +57,10 @@ export default class AuthEndpoint {
     this.refreshToken = refreshToken;
     this._api.defaults.headers['Authorization'] = 'Bearer ' + accessToken;
     const { username, sub } = JSON.parse(atob(accessToken.split('.')[1]));
-    localStorage.setItem(GGTU_TOKENS_STORAGE_KEY, JSON.stringify({ accessToken, refreshToken }));
+    localStorage.setItem(
+      GGTU_TOKENS_STORAGE_KEY,
+      JSON.stringify({ accessToken, refreshToken })
+    );
     this.user = {
       username,
       id: sub,

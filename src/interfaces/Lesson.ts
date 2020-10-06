@@ -39,5 +39,8 @@ export interface Lesson {
   group?: Group;
 }
 
-export type CreateLessonDto = Omit<Lesson, 'id' | 'cabinet' | 'subject' | 'teachers' | 'group'> & {teacherIds: number[]};
+export type CreateLessonDto = Omit<
+  Lesson,
+  'id' | 'cabinet' | 'subject' | 'teachers' | 'group'
+> & { teacherIds: number[] };
 export type UpdateLessonDto = Partial<CreateLessonDto>;

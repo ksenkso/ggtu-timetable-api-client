@@ -64,17 +64,20 @@ export async function createPatch(
     EntityType.Teacher,
   ]);
   const group = await createGroup(api);
-  const patch: CreatePatchDto = Object.assign({
-    cabinetId: entities[EntityType.Cabinet][0].id,
-    dates: [new Date(2020, 10, 10).toISOString()],
-    groupId: group.id,
-    index: 0,
-    subjectId: entities[EntityType.Subject][0].id,
-    type: LessonType.Lab,
-    teacherIds: [entities[EntityType.Teacher][0].id]
-  }, patchOptions);
+  const patch: CreatePatchDto = Object.assign(
+    {
+      cabinetId: entities[EntityType.Cabinet][0].id,
+      dates: [new Date(2020, 10, 10).toISOString()],
+      groupId: group.id,
+      index: 0,
+      subjectId: entities[EntityType.Subject][0].id,
+      type: LessonType.Lab,
+      teacherIds: [entities[EntityType.Teacher][0].id],
+    },
+    patchOptions
+  );
   const created = await api.patches.create(patch);
-  return {group, patch: created};
+  return { group, patch: created };
 }
 
 export async function createGroup(
@@ -107,7 +110,7 @@ export async function createLesson(
   const entities = await loader.loadEntities(api, [
     EntityType.Subject,
     EntityType.Cabinet,
-    EntityType.Teacher
+    EntityType.Teacher,
   ]);
   const group = await createGroup(api);
   const lesson: CreateLessonDto = Object.assign(

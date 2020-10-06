@@ -7,7 +7,10 @@ describe('SubjectsEndpoint', function() {
   let allSubjects: Subject[];
   beforeAll(async () => {
     api = new ApiClient({ baseURL: process.env.API_URL });
-    await api.auth.login(process.env.ROOT_USER as string, process.env.ROOT_PASSWORD as string)
+    await api.auth.login(
+      process.env.ROOT_USER as string,
+      process.env.ROOT_PASSWORD as string
+    );
   });
 
   it('should fetch all subjects from API', function(done) {

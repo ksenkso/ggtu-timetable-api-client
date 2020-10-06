@@ -8,7 +8,10 @@ describe('CabinetsEndpoint', function() {
   let allCabinets: Cabinet[];
   beforeAll(async () => {
     api = new ApiClient({ baseURL: process.env.API_URL });
-    await api.auth.login(process.env.ROOT_USER as string, process.env.ROOT_PASSWORD as string)
+    await api.auth.login(
+      process.env.ROOT_USER as string,
+      process.env.ROOT_PASSWORD as string
+    );
     return api.buildings.getAll().then(buildings => {
       allBuildings = buildings;
     });

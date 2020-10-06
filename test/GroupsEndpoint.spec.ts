@@ -11,7 +11,10 @@ describe('GroupsEndpoint', function() {
   let allFaculties: Faculty[];
   beforeAll(async () => {
     api = new ApiClient({ baseURL: process.env.API_URL });
-    await api.auth.login(process.env.ROOT_USER as string, process.env.ROOT_PASSWORD as string)
+    await api.auth.login(
+      process.env.ROOT_USER as string,
+      process.env.ROOT_PASSWORD as string
+    );
     return Promise.all([
       api.specs.getAll().then(specs => {
         allSpecs = specs;

@@ -1,5 +1,5 @@
 import ApiClient, { Teacher } from '../src';
-import {CreateTeacherDto} from "../src/interfaces/Teacher";
+import { CreateTeacherDto } from '../src/interfaces/Teacher';
 
 describe('TeachersEndpoint', function() {
   let api: ApiClient;
@@ -7,7 +7,10 @@ describe('TeachersEndpoint', function() {
   let allTeachers: Teacher[];
   beforeAll(async () => {
     api = new ApiClient({ baseURL: process.env.API_URL });
-    await api.auth.login(process.env.ROOT_USER as string, process.env.ROOT_PASSWORD as string)
+    await api.auth.login(
+      process.env.ROOT_USER as string,
+      process.env.ROOT_PASSWORD as string
+    );
   });
 
   it('should fetch all teachers from API', function(done) {

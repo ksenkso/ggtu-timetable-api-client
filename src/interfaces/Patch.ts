@@ -18,5 +18,8 @@ export interface Patch {
   group?: Group;
 }
 
-export type CreatePatchDto = Omit<Patch, 'id' | 'cabinet' | 'subject' | 'teachers' | 'group'> & {teacherIds: number[]};
+export type CreatePatchDto = Omit<
+  Patch,
+  'id' | 'cabinet' | 'subject' | 'teachers' | 'group'
+> & { teacherIds: number[] };
 export type UpdatePatchDto = Partial<CreatePatchDto>;

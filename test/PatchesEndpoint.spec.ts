@@ -40,7 +40,7 @@ describe('RegularTimetableEndpoint', () => {
       dates: [
         new Date(2020, 10, 11).toISOString(),
         new Date(2020, 10, 12).toISOString(),
-      ]
+      ],
     };
     const updated = await api.patches.update(patch.id, toUpdate);
     expect(updated.id).toEqual(patch.id);

@@ -33,7 +33,7 @@ export enum EntityType {
   Group,
   Lesson,
   Faculty,
-  Specialization
+  Specialization,
 }
 
 export default class ApiClient {
@@ -73,7 +73,7 @@ export default class ApiClient {
             this.auth.logout();
           }
         } else {
-          return Promise.reject(error.response.data)
+          return Promise.reject(error.response.data);
         }
       }
       return Promise.reject(error);
