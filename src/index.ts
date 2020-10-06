@@ -20,16 +20,20 @@ type ApiEndpoints =
   | RegularTimetableEndpoint
   | PatchesEndpoint
   | TeachersEndpoint
+  | SpecializationsEndpoint
+  | FacultiesEndpoint
   | AuthEndpoint;
 
 export enum EntityType {
   Teacher,
   Cabinet,
   Building,
-  Lesson,
-  PatchEntry,
+  Subject,
+  Patch,
   Group,
-  TimetableEntry,
+  Lesson,
+  Faculty,
+  Specialization
 }
 
 export default class ApiClient {
@@ -84,14 +88,18 @@ export default class ApiClient {
         return this.cabinets as T;
       case EntityType.Group:
         return this.groups as T;
-      case EntityType.Lesson:
+      case EntityType.Subject:
         return this.subjects as T;
-      case EntityType.PatchEntry:
+      case EntityType.Patch:
         return this.patches as T;
       case EntityType.Teacher:
         return this.teachers as T;
-      case EntityType.TimetableEntry:
+      case EntityType.Lesson:
         return this.timetable as T;
+      case EntityType.Specialization:
+        return this.specs as T;
+      case EntityType.Faculty:
+        return this.faculties as T;
       default:
         throw new Error('no entrypoint for key ' + entity);
     }
