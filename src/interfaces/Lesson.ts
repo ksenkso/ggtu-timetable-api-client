@@ -8,7 +8,7 @@ export enum Week {
   Bottom,
 }
 
-export enum TimetableEntryType {
+export enum LessonType {
   Lecture,
   Practice,
   Lab,
@@ -29,7 +29,7 @@ export interface Lesson {
   day: Day;
   week: Week;
   index: number;
-  type: TimetableEntryType;
+  type: LessonType;
   subjectId: number;
   cabinetId: number;
   groupId: number;
