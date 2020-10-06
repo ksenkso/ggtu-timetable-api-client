@@ -6,7 +6,7 @@ import ApiClient, {
   Lesson,
   Subject,
   Teacher,
-  TimetableEntryType,
+  LessonType,
   UpdateLessonDto,
   Week,
 } from '../src';
@@ -30,7 +30,7 @@ describe('RegularTimetableEndpoint', () => {
       groupId: group.id,
       index: 0,
       subjectId: allSubjects[0].id,
-      type: TimetableEntryType.Lecture,
+      type: LessonType.Lecture,
       week: Week.Top,
       teacherIds: [allTeachers[0].id],
     };
@@ -49,7 +49,7 @@ describe('RegularTimetableEndpoint', () => {
     allCabinets = await api.cabinets.getAll();
   });
 
-  it('should add a lesson in a timetable for a test group', async function() {
+  it('should add a subject in a timetable for a test group', async function() {
     const { group, lesson } = await createLesson();
     expect(lesson.id).toBeDefined();
     expect(lesson.subject).toEqual(allSubjects[0]);
@@ -59,7 +59,7 @@ describe('RegularTimetableEndpoint', () => {
     return api.groups.delete(group.id);
   });
 
-  it('should change a lesson', async function() {
+  it('should change a subject', async function() {
     const { group, lesson } = await createLesson();
     const toUpdate: UpdateLessonDto = {
       cabinetId: allCabinets[1].id,
@@ -67,7 +67,7 @@ describe('RegularTimetableEndpoint', () => {
       week: Week.Bottom,
       index: 1,
       subjectId: allSubjects[1].id,
-      type: TimetableEntryType.Lab,
+      type: LessonType.Lab,
       teacherIds: [allTeachers[1].id],
     };
     const updated = await api.timetable.update(lesson.id, toUpdate);
@@ -81,7 +81,7 @@ describe('RegularTimetableEndpoint', () => {
     return api.groups.delete(group.id);
   });
 
-  it('should delete a lesson from a timetable', async function() {
+  it('should delete a subject from a timetable', async function() {
     const { group, lesson } = await createLesson();
     const deletedId = await api.timetable.delete(lesson.id);
     expect(deletedId).toEqual(lesson.id);
