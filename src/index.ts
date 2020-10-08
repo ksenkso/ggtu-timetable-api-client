@@ -65,8 +65,16 @@ export default class ApiClient {
     this._api.interceptors.response.use(undefined, error => {
       if (error.config && error.response) {
         if (error.response.status === 401) {
-          if (error.response.name === 'TokenExpiredError') {
+          if (
+            error.response.data &&
+            error.response.data.name === 'TokenExpiredError'
+          ) {
+            // TODO: add retry count option
             return this.auth.refresh().then(() => {
+              // default headers are updated after refresh, use token from there
+              error.config.headers[
+                'Authorization'
+              ] = this._api.defaults.headers['Authorization'];
               return this._api.request(error.config);
             });
           } else {
