@@ -3,8 +3,25 @@ import { WithId } from '../interfaces';
 import RequestBuilder from '../utils/RequestBuilder';
 import RequestConfig from '../interfaces/RequestConfig';
 
-export default class Endpoint<T, C = T, U = C> {
+export interface ApiEndpoint<T, C, U> {
+  getAll(config?: RequestConfig): Promise<WithId<T>[]>;
+
+  get(id: number, config?: RequestConfig): Promise<WithId<T>>;
+
+  delete(id: number, config?: RequestConfig): Promise<number>;
+
+  update(
+    id: number,
+    data: Partial<U>,
+    config?: RequestConfig
+  ): Promise<WithId<T>>;
+
+  create(data: C, config?: RequestConfig): Promise<WithId<T>>;
+}
+
+export default class Endpoint<T, C = T, U = C> implements ApiEndpoint<T, C, U> {
   constructor(protected axios: AxiosInstance, protected route: string) {}
+
   protected _getAll(config: AxiosRequestConfig) {
     return this.axios
       .get(this.route, config)
@@ -34,6 +51,7 @@ export default class Endpoint<T, C = T, U = C> {
       .post(this.route, data, config)
       .then(res => res.data as WithId<T>);
   }
+
   getAll(config?: RequestConfig): Promise<WithId<T>[]> {
     const builder = new RequestBuilder(config);
     return this._getAll(builder.getConfig());

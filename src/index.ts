@@ -3,11 +3,13 @@ import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import BuildingsEndpoint from './endpoints/BuildingsEndpoint';
 import GroupsEndpoint from './endpoints/GroupsEndpoint';
 import SubjectsEndpoint from './endpoints/SubjectsEndpoint';
-import PatchesEndpoint from './endpoints/PatchesEndpoint';
+import PatchesEndpoint, { Patches } from './endpoints/PatchesEndpoint';
 import TeachersEndpoint from './endpoints/TeachersEndpoint';
 import AuthEndpoint from './endpoints/AuthEndpoint';
 import Endpoint from './endpoints/Endpoint';
-import RegularTimetableEndpoint from './endpoints/RegularTimetableEndpoint';
+import RegularTimetableEndpoint, {
+  Lessons,
+} from './endpoints/RegularTimetableEndpoint';
 import SpecializationsEndpoint from './endpoints/SpecializationsEndpoint';
 import FacultiesEndpoint from './endpoints/FacultiesEndpoint';
 
@@ -41,8 +43,8 @@ export default class ApiClient {
   public readonly buildings: BuildingsEndpoint;
   public readonly groups: GroupsEndpoint;
   public readonly subjects: SubjectsEndpoint;
-  public readonly timetable: RegularTimetableEndpoint;
-  public readonly patches: PatchesEndpoint;
+  public readonly timetable: Lessons;
+  public readonly patches: Patches;
   public readonly teachers: TeachersEndpoint;
   public readonly auth: AuthEndpoint;
   public readonly specs: SpecializationsEndpoint;
@@ -69,7 +71,12 @@ export default class ApiClient {
             error.response.data &&
             error.response.data.name === 'TokenExpiredError'
           ) {
+            // TODO: add retry count option
             return this.auth.refresh().then(() => {
+              // default headers are updated after refresh, use token from there
+              error.config.headers[
+                'Authorization'
+              ] = this._api.defaults.headers['Authorization'];
               return this._api.request(error.config);
             });
           } else {

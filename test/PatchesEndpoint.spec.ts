@@ -55,9 +55,9 @@ describe('RegularTimetableEndpoint', () => {
 
   it('should delete a patch from a timetable', async function() {
     const { group, lesson } = await createLesson(api);
-    const deletedId = await api.timetable.delete(lesson.id);
+    const deletedId = await api.patches.delete(lesson.id);
     expect(deletedId).toEqual(lesson.id);
-    await expect(api.timetable.get(lesson.id)).rejects.toEqual({
+    await expect(api.patches.get(lesson.id)).rejects.toEqual({
       statusCode: 404,
       message: 'Занятие не найдено',
       error: 'Not Found',
@@ -69,7 +69,7 @@ describe('RegularTimetableEndpoint', () => {
     return api.groups
       .getAll()
       .then(groups => {
-        return api.timetable.getForGroup(groups[0].id);
+        return api.patches.getForGroup(groups[0].id);
       })
       .then(lessons => {
         expect(lessons).toBeTruthy();

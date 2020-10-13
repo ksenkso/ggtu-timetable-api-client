@@ -101,19 +101,27 @@ describe('RegularTimetableEndpoint', () => {
       })
       .then(lessons => {
         expect(lessons).toBeTruthy();
-        expect(Array.isArray(lessons)).toEqual(true);
-        expect(
-          lessons.every(lesson => {
-            return (
-              lesson.teachers &&
-              lesson.teachers.length &&
-              lesson.cabinet &&
-              lesson.cabinet.name &&
-              lesson.subject &&
-              lesson.subject.name
-            );
-          })
-        ).toEqual(true);
+        expect(Object.keys(lessons)).toHaveLength(2);
+        expect(lessons[Week.Top]).toBeDefined();
+        expect(lessons[Week.Bottom]).toBeDefined();
+        const isValidTimetable = Object.keys(lessons).every(weekIndex => {
+          const week = lessons[(weekIndex as unknown) as Week];
+          return Object.keys(week).every(dayIndex => {
+            const day = week[(dayIndex as unknown) as Day];
+            return day.every(lesson => {
+              return (
+                lesson === null ||
+                (lesson.teachers &&
+                  lesson.teachers.length &&
+                  lesson.cabinet &&
+                  lesson.cabinet.name &&
+                  lesson.subject &&
+                  lesson.subject.name)
+              );
+            });
+          });
+        });
+        expect(isValidTimetable).toEqual(true);
       });
   });
 });
