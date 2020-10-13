@@ -37,10 +37,11 @@ export interface Lesson {
   subject: Subject;
   teachers: Teacher[];
   group?: Group;
+  isRegular: boolean;
 }
 
 export type CreateLessonDto = Omit<
   Lesson,
-  'id' | 'cabinet' | 'subject' | 'teachers' | 'group'
+  'id' | 'cabinet' | 'subject' | 'teachers' | 'group' | 'isRegular'
 > & { teacherIds: number[] };
 export type UpdateLessonDto = Partial<CreateLessonDto & { id: number }>;
