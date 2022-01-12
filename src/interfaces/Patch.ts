@@ -16,10 +16,11 @@ export interface Patch {
   subject: Subject;
   teachers: Teacher[];
   group?: Group;
+  isRegular: boolean;
 }
 
 export type CreatePatchDto = Omit<
   Patch,
-  'id' | 'cabinet' | 'subject' | 'teachers' | 'group'
+  'id' | 'cabinet' | 'subject' | 'teachers' | 'group' | 'isRegular'
 > & { teacherIds: number[] };
 export type UpdatePatchDto = Partial<CreatePatchDto & { id: number }>;

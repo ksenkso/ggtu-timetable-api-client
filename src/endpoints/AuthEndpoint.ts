@@ -1,5 +1,6 @@
 import { AxiosInstance } from 'axios';
 import { User } from '../interfaces';
+import EventEmitter from '../utils/EventEmitter';
 
 export const GGTU_TOKENS_STORAGE_KEY = `ggtu_api/tokens`;
 
@@ -8,13 +9,14 @@ export interface ApiCredentials {
   refreshToken: string;
 }
 
-export default class AuthEndpoint {
+export default class AuthEndpoint extends EventEmitter {
   protected route = 'auth';
   protected accessToken = '';
   protected refreshToken = '';
   public user: Omit<User, 'facultyId'> | null = null;
 
   constructor(private _api: AxiosInstance) {
+    super();
     let tokens: any = localStorage.getItem(GGTU_TOKENS_STORAGE_KEY);
     if (tokens) {
       tokens = JSON.parse(tokens) as ApiCredentials;
@@ -36,6 +38,7 @@ export default class AuthEndpoint {
     this.refreshToken = '';
     localStorage.removeItem(GGTU_TOKENS_STORAGE_KEY);
     delete this._api.defaults.headers['Authorization'];
+    this.emit('logout');
   }
 
   getProfile(): Promise<User> {
