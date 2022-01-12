@@ -1,10 +1,30 @@
+# NOTE
+
+This repo is no longer maintained
+
 # GGTU Timetable API Client
+
+## Description
+
 This library is meat to be used as an API client for [GGTU](http://ggtu.ru/) Timetable API. 
 You don't need any authorization to use read-only methods, because the data they provide is publicly accessible.
+
+Runs with [this server](https://github.com/ksenkso/ggtu-timetable-api).
+
+Required environment variables are presented in `.env.example`.
+
+## Related repos
+
+- [API Server](https://github.com/ksenkso/ggtu-timetable-api)
+- [Admin panel](https://github.com/ksenkso/ggtu-timetable-admin-vue)
+- [Timetable client](https://github.com/ksenkso/ggtu-timetable-client)
+
 ## Installation
+
 ```
 $ npm i  
 ```
+
 ## Usage
 ```javascript
 import ApiClient from 'ggtu-timetable-api-client';
@@ -14,7 +34,9 @@ const config = {
 const api = new ApiClient(config);
 // use the api
 ``` 
+
 ## Endpoints
+
 All entrypoints extend from the `Endpoint` template class except the `AuthEndpoint`.
  - `getAll`;
  - `create`;
@@ -33,7 +55,9 @@ declare class Endpoint<T> {
     create(data: T): Promise<WithId<T>>;
 }
 ```
+
 ### Auth
+
 ```typescript
 declare class AuthEndpoint {
     private _api;
@@ -63,3 +87,8 @@ declare class TimetableEndpoint<T> extends Endpoint<T> {
     getForTeacherByWeek(teacherId: number, week: Week): Promise<T[]>;
 }
 ```
+
+## Tests
+
+Tests here are not really for the lib - they mainly test interaction with the server,
+thus a running API server is required.
